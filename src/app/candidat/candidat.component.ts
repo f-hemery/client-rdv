@@ -1,0 +1,18 @@
+import {Component, OnInit, Input} from '@angular/core';
+import {Candidat} from "../serv-candidats.service";
+
+@Component({
+  selector: 'app-candidat',
+  templateUrl: './candidat.component.html',
+  styleUrls: ['./candidat.component.css']
+})
+export class CandidatComponent implements OnInit {
+  @Input() candidat: Candidat;
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
+}

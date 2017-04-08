@@ -2,6 +2,36 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+## Qu'est-ce que l'on avait avec Ciell2 ?
+* Une liste de dossier avec la possibilité de les convoquer à un entretien
+* Après validation de la liste des candidats convoqués à un entretien, création et envoi automatique  d'un message mail vers les candidats pour les inviter à choisir un créneau de rendez-vous
+* Création de créneaux pour les entretiens
+  * lieu
+  * licence professionnelle de candidature
+  * date du créneau
+  * nombre de créneaux
+  * heure de début
+  * nombre de rendez-vous par créneau
+  * intervalle de temps entre deux créneaux
+  * créneaux visible/non-visible
+* Chaque candidat convoqué, après identification, choisit un créneau parmi l'ensemble des créneaux proposés
+  * l'étudiant voit la liste des créneaux disponibles
+  * le nombre de places encore disponibles
+  * Consultation et modification d'un créneau d'entretiens par le responsable
+* Edition d'une liste d'émargement des candidats pour un créneau
+  
+## Qu'est-ce que l'on veut ?
+
+A partir des données récupérées via l'application e-candidat2, le dossier de candidature des étudiants, il faut 
+* Obtenir l'accès aux identifiants des candidats (procédure de connexion), on ne va pas demander aux candidats de recréer un compte pour faire un choix de créneau pour un entretien.
+* Obtenir l'accès aux identifiants des respoonsables.
+* Reproduire les différents scénarii disponibles avec Ciell2
+  * Créer des créneaux d'entretiens
+  * Convoquer certains étudiants à un entretien
+  * Choix par un candidat d'un créneau d'entretien
+  * Consultation (avec modification possible) par le responsable des rendez-vous pris (quand et par qui)
+  * Edition d'une liste d'émargement pour un créneau d'entretiens
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
