@@ -1,0 +1,13 @@
+.example-card {
+  width: 400px;
+}
+
+.homme-header-image {
+  background-image: url('/assets/img/homme.png');
+  background-size: cover;
+}
+
+.femme-header-image {
+  background-image: url('/assets/img/femme.png');
+  background-size: cover;
+}

@@ -12,6 +12,10 @@ export class CandidatComponent implements OnInit {
   constructor() {
   }
 
+  isHomme(): boolean {
+    return this.candidat.civilite === 'Monsieur';
+  }
+
   ngOnInit() {
   }
 

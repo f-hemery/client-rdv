@@ -1,15 +1,18 @@
-<div>
-  <div class="col-sm-2 col-lg-2 col-md-2">
-    <p>{{candidat.civilite}}</p>
-  </div>
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <p>{{candidat.prenom}} {{candidat.nom}}</p>
-  </div>
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <p>{{candidat.ville}}</p>
-  </div>
-  <div class="col-sm-2 col-lg-2 col-md-2">
-    <p>{{candidat.codePostal }} </p>
-  </div>
-
-</div>
+<md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar [ngClass]="{'homme-header-image':isHomme(), 'femme-header-image':candidat.civilite === 'Madame'}"></div>
+    <!--<div class="homme-header-image"></div>-->
+    <md-card-title>{{candidat.civilite}} {{candidat.prenom}} {{candidat.nom}}</md-card-title>
+    <md-card-subtitle>{{candidat.adresse}} {{candidat.adresse1 }}</md-card-subtitle>
+    <md-card-subtitle>{{candidat.ville}} {{candidat.codePostal }}</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+    <ul>
+      <li>{{candidat.dernierEtab}} {{candidat.dernierDip}} </li>
+    </ul>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button>LIKE</button>
+    <button md-button>SHARE</button>
+  </md-card-actions>
+</md-card>

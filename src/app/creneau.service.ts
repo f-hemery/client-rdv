@@ -1,80 +1,79 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
-import {Http, Response} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Http, RequestOptions, Response} from '@angular/http';
 
-/*
- private long id;
- private String lieu;
- @ManyToOne
- @JoinColumn(nullable = false, name = "formation_id")
- private Formation Formation;
- private Date dateCreneau;
- private int nbCreneaux;
- private Date heureCreneau;
- private int intervalle;
- private boolean visible;
- */
 
 export class Creneau {
-    constructor(public id: number,
-                public lieu: string,
-                public formation: string,
-                public dateCreneau: number,
-                public nbCreneaux: number,
-                public nbPlaces: number,
-                public heureCreneau: number,
-                public intervalle: number,
-                public visible: boolean) {
-    }
+  constructor(public id: number,
+              public lieu: string,
+              public codeFormation: string,
+              public dateCreneau: Date,
+              public nbCreneaux: number,
+              public dureeCreneau: number,
+              public nbPlaces: number,
+              public intervalle: number,
+              public visible: boolean) {
+  }
 }
 @Injectable()
 export class CreneauService {
 
-    constructor(public http: Http) {
-    }
-    getCreneaux(): Observable<Array<Creneau>> {
-        let url = "https://rdv-candidat.herokuapp.com/candidats";
-        console.log("URL = " + url);
-        return this.http.get(url).map(res => {
-            console.log("resultat: ",res);
-            return this.toCreneaux(res.json());
-        }).catch(this.handleError);
-    }
+  constructor(public http: Http) {
+  }
 
-    toCreneaux = (r: any): Array<Creneau> => {
-        let candidats: Creneau[] = [];
-        console.log("toCandidats: ",r);
-        candidats = r.map(t => this.toCreneau(t));
-        return candidats;
-    }
+  getCreneaux(): Observable<Array<Creneau>> {
+    // const url = 'https://rdv-candidat.herokuapp.com/creneaux';
+    const url = 'http://localhost:4567/creneaux';
+    console.log('URL = ' + url);
+    return this.http.get(url).map(res => {
+      console.log('resultat: ', res);
+      return this.toCreneaux(res.json());
+    }).catch(this.handleError);
+  }
 
-    toCreneau = (r: any): Creneau => {
-        console.log("toCandidat: ",r);
-        let candidat = <Creneau>({
-            id: r.id,
-            lieu: r.lieu,
-            formation: r.formation,
-            dateCreneau: r.dateCreneau,
-            nbCreneaux: r.nbCreneaux,
-            nbPlaces: r.nbPlaces,
-            heureCreneau: r.heureCreneau,
-            intervalle: r.intervalle,
-            visible: r.valide
-        });
-        return candidat;
-    }
+  toCreneaux = (r: any): Array<Creneau> => {
+    let candidats: Creneau[] = [];
+    console.log('toCreneaux: ', r);
+    candidats = r.map(t => this.toCreneau(t));
+    return candidats;
+  }
 
-    private handleError(error: Response | any) {
-        let errMsg: string;
-        if (error instanceof Response) {
-            const body = error.json() || '';
-            const err = body.error || JSON.stringify(body);
-            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-        } else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error("Message d'erreur: " + errMsg);
-        return Observable.throw(errMsg);
+  toCreneau = (r: any): Creneau => {
+    console.log('toCreneau: ', r);
+    const creneau = <Creneau>({
+      id: r.id,
+      lieu: r.lieu,
+      codeFormation: r.codeFormation,
+      dateCreneau: r.dateCreneau,
+      nbCreneaux: r.nbCreneaux,
+      dureeCreneau: r.dureeCreneau,
+      nbPlaces: r.nbPlaces,
+      intervalle: r.intervalle,
+      visible: r.visible
+    });
+    return creneau;
+  }
+
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
     }
+    console.error('Message d\'erreur: ' + errMsg);
+    return Observable.throw(errMsg);
+  }
+
+  createCreneau(creneau: Creneau) {
+    console.log("demande création creneau: ", creneau);
+    const headers = new Headers({'Content-Type': 'application/json'});
+//    const options = new RequestOptions({headers: headers});
+    const body = JSON.stringify(creneau);
+    console.log("json ", body);
+    return this.http.post('http://localhost:4567/creneau', body, headers).map((res: Response) => res.json());
+  }
 
 }

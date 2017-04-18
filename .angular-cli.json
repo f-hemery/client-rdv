@@ -19,9 +19,13 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "style-md.scss",
+        "../node_modules/angular-calendar/dist/css/angular-calendar.css",
+        "assets/icon-font/material-icons.css"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -34,10 +38,6 @@
       "config": "./protractor.conf.js"
     }
   },
-  "styles": [
-    "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "styles.css"
-  ],
   "lint": [
     {
       "project": "src/tsconfig.app.json"
@@ -55,7 +55,8 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }

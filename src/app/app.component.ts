@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  lastDialogResult: string;
+  navItems = [
+    {name: 'Candidats', route: 'candidats'},
+    {name: 'Creneaux', route: 'creneaux'},
+    {name: 'Creneau', route: 'creneau'},
+  ];
 }
