@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Candidat} from "../serv-candidats.service";
+import {Candidat} from "../candidat.service";
 
 @Component({
   selector: 'app-candidat',

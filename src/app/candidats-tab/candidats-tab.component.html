@@ -1,0 +1,28 @@
+<md-select placeholder="Formation" [formControl]="formationControl">
+  <md-option *ngFor="let formation of formations let i = index" [value]="i">
+    {{ formation.codeFormation }}
+  </md-option>
+</md-select>
+<ng-template #loading>
+  <div class="text-center">
+    <i class="fa fa-spin fa-spinner fa-5x"></i>
+    <br>
+    Loading candidats...
+  </div>
+</ng-template>
+<div *ngIf="rows; else loading;">
+<ngx-datatable
+        class="material"
+        [rows]="rows"
+        [columns]="colonnes"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [externalPaging]="true"
+        [count]="count"
+        [offset]="offset"
+        [limit]="limit"
+        (page)='onPage($event)'>
+</ngx-datatable>
+</div>

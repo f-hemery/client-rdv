@@ -1,3 +1,19 @@
-<md-list>
-  <div  *ngFor="let candidat of candidats" ><app-candidat [candidat]="candidat"></app-candidat></div>
-</md-list>
+<md-select placeholder="Formation" [formControl]="formationControl">
+    <md-option *ngFor="let formation of formations" [value]="formation.id">
+        {{ formation.codeFormation }}
+    </md-option>
+</md-select>
+<ng-template #loading>
+    <div class="text-center">
+        <i class="fa fa-spin fa-spinner fa-5x"></i>
+        <br>
+        Loading candidats...
+    </div>
+</ng-template>
+<div *ngIf="candidats$ | async; else loading; let candidats">
+    <md-list>
+        <div *ngFor="let candidat of candidats">
+            <app-candidat [candidat]="candidat"></app-candidat>
+        </div>
+    </md-list>
+</div>

@@ -13,13 +13,14 @@
   </div>
 </ng-template>
 
-<!--<div *ngIf="events$ | async; else loading; let events">-->
-<div>
+<div *ngIf="rdv$ | async; else loading; let events">
+<!--<div>-->
   <div [ngSwitch]="view">
     <mwl-calendar-month-view
       *ngSwitchCase="'month'"
       [viewDate]="viewDate"
       [events]="events"
+      [refresh]="refresh"
       [activeDayIsOpen]="activeDayIsOpen"
       (dayClicked)="dayClicked($event.day)"
       (eventClicked)="eventClicked($event.event)">
@@ -28,12 +29,14 @@
       *ngSwitchCase="'week'"
       [viewDate]="viewDate"
       [events]="events"
+      [refresh]="refresh"
       (eventClicked)="eventClicked($event.event)">
     </mwl-calendar-week-view>
     <mwl-calendar-day-view
       *ngSwitchCase="'day'"
       [viewDate]="viewDate"
       [events]="events"
+      [refresh]="refresh"
       (eventClicked)="eventClicked($event.event)">
     </mwl-calendar-day-view>
   </div>

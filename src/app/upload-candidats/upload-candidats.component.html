@@ -1,0 +1,36 @@
+<!--
+
+<input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".xls,.xlsx">
+
+-->
+
+
+<div class="button-container" class="mtb20">
+  <label class="upload-button is-pulled-left">
+    <input (change)="onChange($event)"
+            type="file"
+           class="hidden"
+           ngFileSelect
+           [options]="options"
+           [events]="inputUploadEvents"
+           (onUpload)="handleUpload($event)"
+           (beforeUpload)="beforeUpload($event)">
+    Choisir un fichier <span *ngIf="uploadingFile">{{uploadingFile}}</span>
+  </label>
+</div>
+
+<p>
+  Allowed extensions: <code><b>.xls</b>, <b>.xlsx</b></code>
+</p>
+
+<div>
+  <button type="button" class="start-upload-button" (click)="startUpload()">Start Upload</button>
+</div>
+
+<div *ngIf="response">
+  <pre><code>{{response.result}}</code></pre>
+</div>
+
+<div *ngIf="errorMessage">
+  <span>errorMessage</span>
+</div>

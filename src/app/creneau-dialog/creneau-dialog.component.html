@@ -1,0 +1,21 @@
+<h1 md-dialog-title>Information sur le créneau</h1>
+<md-dialog-content>
+    <md-icon svgIcon="thumbs-up"></md-icon>
+    <md-list>
+        <h3 md-subheader>Liste des candidats</h3>
+        <md-list-item *ngFor="let candidat of candidats$ | async">
+            <md-icon md-list-icon>folder</md-icon>
+            <h4 md-line>{{candidat.prenom}} {{candidat.nom}}</h4>
+            <p md-line> {{candidat.dernierDip}} </p>
+        </md-list-item>
+    </md-list>
+</md-dialog-content>
+<md-dialog-actions>
+<!--
+    <button md-raised-button md-dialog-close>Ok</button>
+    <button md-raised-button md-dialog-close>Modifier</button>
+-->
+    <button md-raised-button (click)="dialogRef.close('Ok')">Ok</button>
+    <button md-raised-button (click)="dialogRef.close('Modifier')">Modifier</button>
+
+</md-dialog-actions>

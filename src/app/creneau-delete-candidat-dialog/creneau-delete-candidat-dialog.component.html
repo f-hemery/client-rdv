@@ -1,0 +1,14 @@
+<h1 md-dialog-title>Suppression d'un candidat d'un créneau</h1>
+<md-dialog-content>
+    <md-card>
+        <md-card-subtitle>Suppression</md-card-subtitle>
+        <md-card-title>{{candidat.prenom}} {{candidat.nom}}</md-card-title>
+        <md-card-content>
+            <p>La suppression sera effective après le clic sur le bouton Ok.</p>
+        </md-card-content>
+        <md-card-actions>
+            <button md-button (click)="onSubmit('OK')">OK</button>
+            <button md-button (click)="onSubmit('ANNULER')">ANNULER</button>
+        </md-card-actions>
+    </md-card>
+</md-dialog-content>

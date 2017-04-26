@@ -1,0 +1,31 @@
+<h2 md-dialog-title>Ajouter un candidat</h2>
+<p>{{data.message}}</p>
+<md-dialog-content>
+    <ng-template #loading>
+        <div class="text-center">
+            <i class="fa fa-spin fa-spinner fa-5x"></i>
+            <br>
+            Loading candidats...
+        </div>
+    </ng-template>
+
+    <div *ngIf="candidats$ | async; else loading; let candidats">
+        <!--<form [formGroup]="formModel" (ngSubmit)="onSubmit()" novalidate>-->
+        <md-select style="width: 250px;" placeholder="Candidat..." [formControl]="candidatControl">
+            <md-option *ngFor="let candidat of candidats" [value]="candidat.id">
+                {{ candidat.prenom }} {{ candidat.nom }}
+            </md-option>
+        </md-select>
+        <!--</form>-->
+    </div>
+</md-dialog-content>
+
+<md-dialog-actions>
+    <button md-raised-button color="primary" (click)="onSubmit()">Valide</button>
+    <button md-raised-button color="primary" (click)="onSubmit('annule')">Annule</button>
+<!--    <button
+            md-raised-button
+            color="primary"
+            md-dialog-close>Valide
+    </button>-->
+</md-dialog-actions>

@@ -1,0 +1,29 @@
+<h1 md-dialog-title>Information sur le créneau</h1>
+<!--
+<i class="material-icons">face</i><md-icon>face</md-icon>
+<md-icon>add_circle</md-icon><md-icon svgIcon="thumbs-up"></md-icon>
+<button md-fab md-48><md-icon>add</md-icon></button>
+-->
+<md-dialog-content>
+    <md-list>
+        <h3 md-subheader>Modification de la liste des candidats</h3>
+        <md-list-item *ngFor="let candidat of candidats$ | async">
+            <md-icon md-list-icon>folder</md-icon>
+            <h4 md-line>{{candidat.prenom}} {{candidat.nom}}
+                <button md-icon-button color="accent" (click)="openValideDeleteDialog(candidat.id)">
+                    <md-icon class="md-24">clear</md-icon>
+                </button>
+            </h4>
+            <p md-line> {{candidat.dernierDip}} </p>
+        </md-list-item>
+    </md-list>
+</md-dialog-content>
+<md-dialog-actions>
+    <button md-raised-button (click)="dialogRef.close('Ok')">Ok</button>
+    <button md-raised-button (click)="dialogRef.close('Annuler')">Annuler</button>
+</md-dialog-actions>
+<div *ngIf="notFull">
+<span class="app-action" [class.m2app-dark]="isDarkTheme">
+  <button md-fab (click)="openAddDialog()"><md-icon>add</md-icon></button>
+</span>
+</div>
